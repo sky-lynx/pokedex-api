@@ -1,23 +1,23 @@
 const express = require('express');
 const app = express();
+const pokemonData = require('./data');
 
 const PORT = process.env.PORT || 3000;
 
-// Example data (You can replace this with dynamic data)
-const pokemonData = [
-  { id: 1, name: 'Bulbasaur', type: 'Grass', ability: 'Overgrow' },
-  { id: 2, name: 'Charmander', type: 'Fire', ability: 'Blaze' },
-  { id: 3, name: 'Squirtle', type: 'Water', ability: 'Torrent' },
-];
-
-// Basic GET endpoint
+// GET all Pokémon
 app.get('/api/pokemon', (req, res) => {
   res.json(pokemonData);
 });
 
-// Specific Pokémon endpoint
-app.get('/api/pokemon/:id', (req, res) => {
-  const pokemon = pokemonData.find(p => p.id == req.params.id);
+// GET Pokémon by ID or Name
+app.get('/api/pokemon/:identifier', (req, res) => {
+  const identifier = req.params.identifier.toLowerCase();
+
+  // Check if the identifier is numeric (ID)
+  const pokemon = isNaN(identifier)
+    ? pokemonData.find(p => p.name.toLowerCase() === identifier) // Search by name
+    : pokemonData.find(p => p.id == identifier); // Search by ID
+
   if (pokemon) {
     res.json(pokemon);
   } else {
