@@ -1,6 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('YOUR_API_URL/api/pokemon') // Update with your actual API URL
-        .then(response => response.json())
+    const apiUrl = 'https://pokedex-api.azurewebsites.net/api/pokemon'; // Your actual API URL
+    fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
             const pokemonList = document.getElementById('pokemon-list');
             data.forEach(pokemon => {
