@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('pokemonData.json') // Make sure this is in the same directory as your HTML
+    fetch('pokemon-data.json') // Fetch the JSON file
         .then(response => response.json())
-        .then(data => {
+        .then(pokemonData => {
             const pokemonList = document.getElementById('pokemon-list');
-            data.forEach(pokemon => {
+            pokemonData.forEach(pokemon => {
                 const card = document.createElement('div');
                 card.className = 'pokemon-card';
                 card.innerHTML = `
