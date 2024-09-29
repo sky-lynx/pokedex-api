@@ -1,30 +1,12 @@
 const express = require('express');
+const pokemonData = require('./data'); // Import your local data.js
 const app = express();
-const pokemonData = require('./data');
 
-const PORT = process.env.PORT || 3000;
-
-// GET all Pokémon
 app.get('/api/pokemon', (req, res) => {
-  res.json(pokemonData);
+  res.json(pokemonData); // Serve the data from data.js
 });
 
-// GET Pokémon by ID or Name
-app.get('/api/pokemon/:identifier', (req, res) => {
-  const identifier = req.params.identifier.toLowerCase();
-
-  // Check if the identifier is numeric (ID)
-  const pokemon = isNaN(identifier)
-    ? pokemonData.find(p => p.name.toLowerCase() === identifier) // Search by name
-    : pokemonData.find(p => p.id == identifier); // Search by ID
-
-  if (pokemon) {
-    res.json(pokemon);
-  } else {
-    res.status(404).json({ message: 'Pokémon not found' });
-  }
-});
-
+const PORT = 3000; // Or any available port
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}/api/pokemon`);
 });

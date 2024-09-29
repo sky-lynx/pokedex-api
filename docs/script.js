@@ -1,12 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const apiUrl = 'https://pokedex-api.azurewebsites.net/api/pokemon'; // Your actual API URL
-    fetch(apiUrl)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
+    fetch('http://localhost:3000/api/pokemon')  // Local API URL
+        .then(response => response.json())
         .then(data => {
             const pokemonList = document.getElementById('pokemon-list');
             data.forEach(pokemon => {
@@ -14,7 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.className = 'pokemon-card';
                 card.innerHTML = `
                     <h2>${pokemon.name}</h2>
-                    <p>Types: ${pokemon.types.join(', ')}</p>
+                    <p>Types: ${pokemon.type.join(', ')}</p>
+                    <p>Abilities: ${pokemon.abilities.join(', ')}</p>
                 `;
                 pokemonList.appendChild(card);
             });

@@ -1,15 +1,14 @@
 {
   "name": "pokemon-api",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A simple API for Pokémon data",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "express": "^4.21.0"
-  }
+    "express": "^4.17.1"
+  },
+  "author": "Your Name",
+  "license": "ISC"
 }
