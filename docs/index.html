@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokédex</title>
     <link rel="stylesheet" href="style.css">
+    <title>Pokédex</title>
 </head>
 <body>
     <h1>Pokédex</h1>
     <div id="pokemon-list"></div>
 
-    <!-- Popup Structure -->
+    <!-- Popup Modal -->
     <div id="popup" class="popup">
         <div class="popup-content">
-            <span class="close">&times;</span>
-            <h2 id="popup-name"></h2>
-            <p><strong>Types:</strong> <span id="popup-types"></span></p>
-            <p><strong>Abilities:</strong> <span id="popup-abilities"></span></p>
-            <p><strong>Base Stats:</strong> <span id="popup-stats"></span></p>
+            <span class="close-button">&times;</span>
+            <h2 id="popup-title"></h2>
+            <p id="popup-types"></p>
+            <p id="popup-abilities"></p>
+            <p id="popup-base-stats"></p>
         </div>
     </div>
 
