@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.innerHTML = `
                     <h2>${pokemon.name}</h2>
                     <p>Types: ${pokemon.type.join(', ')}</p>
-                    <p>Abilities: ${pokemon.abilities.join(', ')}</p>
                 `;
 
                 // Add click event to show popup
