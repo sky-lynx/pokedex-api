@@ -1,88 +1,54 @@
 body {
-    background-color: #f4f4f4; /* Light gray background */
+    background-color: #f9f9f9; /* Gray background for the page */
     font-family: Arial, sans-serif;
 }
+
 h1 {
     text-align: center;
 }
 
-#pokemon-list {
-    display: flex; /* Use Flexbox for layout */
-    flex-wrap: wrap; /* Allow wrapping of items */
-    justify-content: center; /* Center items horizontally */
-    gap: 20px; /* Space between cards */
-}
-
 .pokemon-card {
-    width: 18%;
-    margin: 10px;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    display: inline-block;
-    vertical-align: top;
-    text-align: center;
-    transition: transform 0.2s ease;
+    width: calc(20% - 20px); /* Adjust the width of the cards */
+    margin: 10px; /* Space between cards */
+    padding: 15px; /* Padding inside cards */
+    border: 1px solid #ccc; /* Border for cards */
+    border-radius: 8px; /* Round borders */
+    background-color: #fff; /* White background for cards */
+    display: inline-block; /* Align cards in a row */
+    vertical-align: top; /* Align cards to the top */
+    cursor: pointer; /* Change cursor on hover */
+    transition: box-shadow 0.3s; /* Smooth shadow transition */
 }
 
 .pokemon-card:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
-}
-
-.pokemon-card h2 {
-    font-size: 14px; /* Smaller font size for title */
-}
-
-.pokemon-card p {
-    font-size: 12px; /* Smaller font size for text */
-}
-
-#popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    z-index: 10;
-}
-
-
-.popup-content {
-    background-color: white; /* Popup background */
-    border-radius: 10px; /* Round borders */
-    padding: 20px; /* Inner padding */
-    position: relative; /* Position for close button */
-    max-width: 400px; /* Max width for popup */
-    width: 80%; /* Responsive width */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Add shadow to the popup */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
 }
 
 .dimmed {
-    position: fixed;
+    display: none; /* Initially hide the dimmed background */
+    position: fixed; /* Fixed position to cover entire viewport */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Dimmed background */
-    z-index: 9;
-    display: none;
+    background-color: rgba(0, 0, 0, 0.5); /* Dimmed background color */
+    z-index: 100; /* Ensure it appears above other elements */
 }
 
-.popup-content h2 {
-    font-size: 16px; /* Smaller font size for popup title */
-}
-
-.popup-content p {
-    font-size: 12px; /* Smaller font size for popup text */
+#popup {
+    display: none; /* Initially hide the popup */
+    position: fixed; /* Fixed position */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for center alignment */
+    background-color: white; /* Background color for popup */
+    padding: 20px; /* Padding inside popup */
+    border-radius: 8px; /* Round corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for popup */
+    z-index: 101; /* Ensure it appears above the dimmed background */
 }
 
 .close-button {
-    position: absolute; /* Position the close button */
-    top: 10px; /* Position from the top */
-    right: 10px; /* Position from the right */
-    cursor: pointer; /* Change cursor to pointer */
+    cursor: pointer; /* Change cursor for close button */
+    font-weight: bold; /* Bold text for close button */
 }
