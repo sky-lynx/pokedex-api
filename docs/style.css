@@ -8,7 +8,7 @@ h1 {
 }
 
 .pokemon-card {
-    width: calc(20% - 20px); /* Adjust the width of the cards */
+    width: calc(18% - 20px); /* Adjust the width of the cards */
     margin: 10px; /* Space between cards */
     padding: 15px; /* Padding inside cards */
     border: 1px solid #ccc; /* Border for cards */
@@ -22,6 +22,12 @@ h1 {
 
 .pokemon-card:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+}
+
+#pokemon-list {
+    display: flex; /* Use flexbox for alignment */
+    flex-wrap: wrap; /* Allow wrapping of cards */
+    justify-content: center; /* Center the cards */
 }
 
 .dimmed {
