@@ -8,7 +8,7 @@ h1 {
 }
 
 .pokemon-card {
-    width: calc(18% - 20px); /* Adjust the width of the cards */
+    width: calc(15% - 20px); /* Adjust the width of the cards */
     margin: 10px; /* Space between cards */
     padding: 15px; /* Padding inside cards */
     border: 1px solid #ccc; /* Border for cards */
