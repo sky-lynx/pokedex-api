@@ -1,17 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const pokemonList = document.getElementById('pokemon-list');
-    const popup = document.getElementById('popup');
-    const closeButton = document.querySelector('.close-button');
-
-    // Fetch Pokémon data from the JSON file
-    fetch('pokemon-data.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
+    // Fetching data from the JSON file
+    fetch('pokemon-data.json') // Ensure the path is correct
+        .then(response => response.json())
         .then(pokemonData => {
+            const pokemonList = document.getElementById('pokemon-list');
+            const popup = document.getElementById('popup');
+            const closeButton = document.querySelector('.close-button');
+
             pokemonData.forEach(pokemon => {
                 const card = document.createElement('div');
                 card.className = 'pokemon-card';
@@ -32,18 +27,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 pokemonList.appendChild(card);
             });
+
+            // Close button functionality
+            closeButton.addEventListener('click', () => {
+                popup.style.display = 'none'; // Hide the popup
+            });
+
+            // Close popup when clicking outside of it
+            window.addEventListener('click', (event) => {
+                if (event.target === popup) {
+                    popup.style.display = 'none'; // Hide the popup
+                }
+            });
         })
         .catch(error => console.error('Error fetching data:', error));
-
-    // Close button functionality
-    closeButton.addEventListener('click', () => {
-        popup.style.display = 'none'; // Hide the popup
-    });
-
-    // Close popup when clicking outside of it
-    window.addEventListener('click', (event) => {
-        if (event.target === popup) {
-            popup.style.display = 'none'; // Hide the popup
-        }
-    });
 });

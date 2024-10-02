@@ -1,8 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0; /* Light gray background */
-    margin: 0;
-    padding: 20px;
+    font-family: Arial, sans-serif; /* General font for the page */
 }
 
 h1 {
@@ -20,36 +17,32 @@ h1 {
     background-color: #f9f9f9; /* Card background */
     border-radius: 10px; /* Round borders */
     padding: 10px; /* Inner padding */
-    margin: 10px; /* Space between cards */
-    width: calc(20% - 20px); /* Adjust width to fit 5 cards in a row */
+    margin: 5px; /* Smaller space between cards */
+    width: calc(18% - 10px); /* Adjust width to fit more cards (5 in a row) */
     display: inline-block; /* Align cards in a row */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Card shadow */
     transition: transform 0.2s; /* Animation on hover */
 }
 
+.pokemon-card:hover {
+    transform: scale(1.05); /* Slightly enlarge the card on hover */
+}
+
 .pokemon-card h2 {
-    font-size: 16px; /* Smaller font size for title */
+    font-size: 14px; /* Smaller font size for title */
 }
 
 .pokemon-card p {
-    font-size: 14px; /* Smaller font size for text */
+    font-size: 12px; /* Smaller font size for text */
 }
 
-.pokemon-card:hover {
-    transform: scale(1.05); /* Scale up on hover */
-}
-
-.popup {
-    display: none; /* Hidden by default */
-    position: fixed; /* Fixed position for popup */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full screen */
-    height: 100%; /* Full screen */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    display: flex; /* Use Flexbox to center content */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+#popup {
+    display: none; /* Hide the popup by default */
+    position: fixed; /* Position it in the viewport */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Offset to truly center */
+    z-index: 1000; /* Ensure it appears on top */
 }
 
 .popup-content {
@@ -63,16 +56,16 @@ h1 {
 }
 
 .popup-content h2 {
-    font-size: 18px; /* Smaller font size for popup title */
+    font-size: 16px; /* Smaller font size for popup title */
 }
 
 .popup-content p {
-    font-size: 14px; /* Smaller font size for popup text */
+    font-size: 12px; /* Smaller font size for popup text */
 }
 
 .close-button {
-    position: absolute; /* Position close button */
-    top: 10px;
-    right: 10px;
-    cursor: pointer; /* Pointer cursor on hover */
+    position: absolute; /* Position the close button */
+    top: 10px; /* Position from the top */
+    right: 10px; /* Position from the right */
+    cursor: pointer; /* Change cursor to pointer */
 }
