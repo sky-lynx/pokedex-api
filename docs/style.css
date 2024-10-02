@@ -1,5 +1,5 @@
 body {
-    background-color: #f9f9f9; /* Gray background for the page */
+    background-color: #bbbbbb; /* Gray background for the page */
     font-family: Arial, sans-serif;
 }
 
@@ -18,6 +18,14 @@ h1 {
     vertical-align: top; /* Align cards to the top */
     cursor: pointer; /* Change cursor on hover */
     transition: box-shadow 0.3s; /* Smooth shadow transition */
+}
+
+.pokemon-card h2 {
+    font-size: 10px; /* Change the font size for the title */
+}
+
+.pokemon-card p {
+    font-size: 8px; /* Change the font size for the paragraph text */
 }
 
 .pokemon-card:hover {
