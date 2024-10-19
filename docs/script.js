@@ -1,5 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Load Pokémon data from the JSON file
+    const statNames = ['HP', 'Attack', 'Defense', 'Sp. Atk', 'Sp. Def', 'Speed'];
+    
+    // Type colors mapping
+    const typeColors = {
+        Grass: '#78C850',
+        Poison: '#A040A0',
+        Fire: '#F08030',
+        Water: '#6890F0',
+        Bug: '#A8B820',
+        Normal: '#A8A878',
+        Electric: '#F8D030',
+        Ground: '#E0C068',
+        Fairy: '#EE99AC',
+        Fighting: '#C03028',
+        Psychic: '#F85888',
+        Rock: '#B8A038',
+        Ice: '#98D8D8',
+        Dragon: '#7038F8',
+        Ghost: '#705898',
+        Dark: '#705848',
+        Steel: '#B8B8D0',
+        Flying: '#A890F0'
+    };
+
     fetch('pokemon-data.json')
         .then(response => response.json())
         .then(pokemonData => {
@@ -7,12 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const popup = document.getElementById('popup');
             const closeButton = document.querySelector('.close-button');
 
-            // Create a dimmed background for the popup
             const dimmedBackground = document.createElement('div');
             dimmedBackground.className = 'dimmed';
             document.body.appendChild(dimmedBackground);
 
-            // Generate Pokémon cards
             pokemonData.forEach(pokemon => {
                 const card = document.createElement('div');
                 card.className = 'pokemon-card';
@@ -21,30 +42,92 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p>Types: ${pokemon.type.join(', ')}</p>
                 `;
 
-                // Add click event to show popup
                 card.addEventListener('click', () => {
-                    document.getElementById('popup-title').innerText = pokemon.name;
-                    document.getElementById('popup-types').innerText = `Types: ${pokemon.type.join(', ')}`;
-                    document.getElementById('popup-abilities').innerText = `Abilities: ${pokemon.abilities.join(', ')}`;
-                    document.getElementById('popup-base-stats').innerText = `Base Stats: ${pokemon.baseStats.join(', ')}`;
-                    popup.style.display = 'block'; // Show the popup
-                    dimmedBackground.style.display = 'block'; // Show the dimmed background
+                    // Combine name and types for the popup title
+                    const typesString = pokemon.type.join(', ');
+                    document.getElementById('popup-title').innerText = `${pokemon.name}`;
+
+                    // Create button-like type labels
+                    const typesContainer = document.createElement('div');
+                    typesContainer.className = 'types-container'; // Optional: Add a class for styling
+
+                    pokemon.type.forEach(type => {
+                        const typeLabel = document.createElement('span');
+                        typeLabel.className = 'type-label';
+                        typeLabel.innerText = type;
+                        typeLabel.style.backgroundColor = typeColors[type]; // Assign background color
+                        typesContainer.appendChild(typeLabel);
+                    });
+
+                    // Clear existing types and append the types container
+                    document.getElementById('popup-types').innerHTML = ''; // Clear existing text
+                    document.getElementById('popup-types').appendChild(typesContainer);
+
+                    const baseStatsElement = document.getElementById('popup-base-stats');
+                    baseStatsElement.innerHTML = '';
+
+                    pokemon.baseStats.forEach((stat, index) => {
+                        const statBarContainer = document.createElement('div');
+                        statBarContainer.className = 'stat-bar-container';
+
+                        const statLabel = document.createElement('span');
+                        statLabel.className = 'stat-label';
+                        statLabel.innerText = statNames[index];
+
+                        const statBar = document.createElement('div');
+                        statBar.className = 'stat-bar';
+
+                        const statBarFill = document.createElement('div');
+                        statBarFill.className = 'stat-bar-fill';
+                        statBarFill.style.width = '0'; // Start at 0 width
+
+                        // Set color based on stat value
+                        if (stat < 30) {
+                            statBarFill.style.backgroundColor = '#ff0000'; // red
+                        } else if (stat < 60) {
+                            statBarFill.style.backgroundColor = '#d1aa36'; // orange
+                        } else if (stat < 90) {
+                            statBarFill.style.backgroundColor = '#cccf27'; // yellow
+                        } else if (stat < 120) {
+                            statBarFill.style.backgroundColor = '#54cf27'; // green
+                        } else if (stat < 150) {
+                            statBarFill.style.backgroundColor = '#338041'; // dark green
+                        } else {
+                            statBarFill.style.backgroundColor = '#357ecc'; // blue
+                        }
+
+                        const statValue = document.createElement('span');
+                        statValue.className = 'stat-value';
+                        statValue.innerText = stat;
+
+                        statBar.appendChild(statBarFill);
+                        statBarContainer.appendChild(statLabel);
+                        statBarContainer.appendChild(statBar);
+                        statBarContainer.appendChild(statValue);
+                        baseStatsElement.appendChild(statBarContainer);
+
+                        // Animate the bar filling up
+                        setTimeout(() => {
+                            statBarFill.style.width = `${(stat / 150) * 100}%`;
+                        }, 100);
+                    });
+
+                    popup.style.display = 'block';
+                    dimmedBackground.style.display = 'block';
                 });
 
                 pokemonList.appendChild(card);
             });
 
-            // Close button functionality
             closeButton.addEventListener('click', () => {
-                popup.style.display = 'none'; // Hide the popup
-                dimmedBackground.style.display = 'none'; // Hide the dimmed background
+                popup.style.display = 'none';
+                dimmedBackground.style.display = 'none';
             });
 
-            // Close popup when clicking outside of it
             window.addEventListener('click', (event) => {
                 if (event.target === dimmedBackground) {
-                    popup.style.display = 'none'; // Hide the popup
-                    dimmedBackground.style.display = 'none'; // Hide the dimmed background
+                    popup.style.display = 'none';
+                    dimmedBackground.style.display = 'none';
                 }
             });
         })
