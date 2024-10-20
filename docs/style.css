@@ -1,31 +1,41 @@
 body {
     background-color: #d9d9d9; /* Gray background for the page */
     font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center all elements */
 }
 
 h1 {
-    text-align: center;
+    width: 100%; /* Full width */
+    max-width: 400px; /* Set a max width to align with the cards */
+    text-align: center; /* Center the title text */
+    margin: 0; /* Remove margin to prevent shifting */
+
 }
+
 
 .pokemon-card {
-    width: calc(10% - 20px); /* Adjust the width of the cards */
-    margin: 10px; /* Space between cards */
-    padding: 15px; /* Padding inside cards */
-    border: 1px solid #ccc; /* Border for cards */
-    border-radius: 8px; /* Round borders */
-    background-color: #fff; /* White background for cards */
-    display: inline-block; /* Align cards in a row */
-    vertical-align: top; /* Align cards to the top */
-    cursor: pointer; /* Change cursor on hover */
-    transition: box-shadow 0.3s; /* Smooth shadow transition */
+    width: 50%;
+    text-align: center;
+    margin: 5px 0;
+    padding: 5px;
+    box-sizing: border-box;
+    background-color: white; /* Set card color to white */
+    border-radius: 15px; /* Round the edges of the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for depth */
 }
 
+
 .pokemon-card h2 {
-    font-size: 13px; /* Change the font size for the title */
+    font-size: 1.2vw; /* Adjust size as needed */
+
+
 }
 
 .pokemon-card p {
-    font-size: 11px; /* Change the font size for the paragraph text */
+    font-size: 0.8vw; /* Adjust size as needed */
+
 }
 
 .pokemon-card:hover {
@@ -36,6 +46,12 @@ h1 {
     display: flex; /* Use flexbox for alignment */
     flex-wrap: wrap; /* Allow wrapping of cards */
     justify-content: center; /* Center the cards */
+    display: block; /* Ensure each card is on its own line */
+    max-width: 400px; /* Set a fixed width to match the title and input */
+    margin: 10px auto; /* Center the card list */
+    width: 100%; /* Full width of the container */
+
+
 }
 
 .dimmed {
@@ -168,4 +184,27 @@ h1 {
 
 .type-label:hover {
     opacity: 0.8; /* Slightly fade on hover */
+}
+
+#search-input {
+    width: 100%; /* Full width of the container */
+    max-width: 400px; /* Match the title and cards */
+    padding: 10px;
+    border: 2px solid #78C850;
+    border-radius: 25px;
+    font-size: 0.7em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    outline: none;
+    transition: border-color 0.3s ease;
+    margin: 10px auto; /* Center the search input */
+}
+
+
+#search-input:focus {
+    border-color: #F08030; /* Change border color on focus */
+}
+
+#search-input::placeholder {
+    color: #ccc; /* Light gray placeholder */
+    font-style: italic; /* Italic style */
 }

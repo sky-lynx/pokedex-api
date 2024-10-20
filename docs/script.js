@@ -133,3 +133,17 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => console.error('Error loading Pokémon data:', error));
 });
+
+document.getElementById('search-input').addEventListener('input', function() {
+    const filter = this.value.toLowerCase();
+    const pokemonCards = document.querySelectorAll('.pokemon-card');
+
+    pokemonCards.forEach(card => {
+        const name = card.querySelector('h2').innerText.toLowerCase();
+        if (name.includes(filter)) {
+            card.style.display = ''; // Show matching Pokémon
+        } else {
+            card.style.display = 'none'; // Hide non-matching Pokémon
+        }
+    });
+});
