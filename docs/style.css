@@ -16,7 +16,6 @@ h1 {
 
 }
 
-
 .pokemon-card {
     width: 100%;
     text-align: center;
@@ -31,13 +30,13 @@ h1 {
 
 
 .pokemon-card h2 {
-    font-size: 1.2vw; /* Adjust size as needed */
+    font-size: 1.2rem; /* Adjust size as needed */
 
 
 }
 
 .pokemon-card p {
-    font-size: 0.8vw; /* Adjust size as needed */
+    font-size: 0.8rem; /* Adjust size as needed */
 
 }
 
