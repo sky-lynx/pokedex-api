@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Create button-like type labels
                     const typesContainer = document.createElement('div');
-                    typesContainer.className = 'types-container'; // Optional: Add a class for styling
+                    typesContainer.className = 'types-container';
 
                     pokemon.type.forEach(type => {
                         const typeLabel = document.createElement('span');
@@ -108,9 +108,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         // Animate the bar filling up
                         setTimeout(() => {
-                            statBarFill.style.width = `${(stat / 150) * 100}%`;
+                            statBarFill.style.width = `${(stat / 255) * 100}%`;
                         }, 100);
                     });
+
+                    // Abilities container
+                    const abilitiesContainer = document.createElement('div');
+                    abilitiesContainer.className = 'abilities-container';
+
+                    // Add normal abilities
+                    pokemon.abilities.forEach(ability => {
+                        const abilityButton = document.createElement('button');
+                        abilityButton.className = 'ability-button';
+                        abilityButton.innerText = ability; // Set ability name
+                        abilitiesContainer.appendChild(abilityButton);
+                    });
+
+                    // Add hidden abilities
+                    pokemon.hability.forEach(hiddenAbility => {
+                        const hiddenAbilityButton = document.createElement('button');
+                        hiddenAbilityButton.className = 'ability-button hidden-ability';
+                        hiddenAbilityButton.innerText = hiddenAbility; // Set hidden ability name
+                        abilitiesContainer.appendChild(hiddenAbilityButton);
+                    });
+
+                    // Clear existing abilities and append the abilities container
+                    document.getElementById('popup-abilities').innerHTML = ''; // Clear existing text
+                    document.getElementById('popup-abilities').appendChild(abilitiesContainer);
 
                     popup.style.display = 'block';
                     dimmedBackground.style.display = 'block';
@@ -132,18 +156,4 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         })
         .catch(error => console.error('Error loading Pokémon data:', error));
-});
-
-document.getElementById('search-input').addEventListener('input', function() {
-    const filter = this.value.toLowerCase();
-    const pokemonCards = document.querySelectorAll('.pokemon-card');
-
-    pokemonCards.forEach(card => {
-        const name = card.querySelector('h2').innerText.toLowerCase();
-        if (name.includes(filter)) {
-            card.style.display = ''; // Show matching Pokémon
-        } else {
-            card.style.display = 'none'; // Hide non-matching Pokémon
-        }
-    });
 });

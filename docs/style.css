@@ -4,6 +4,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center; /* Center all elements */
+    padding-left: calc(100vw - 100%);
+
 }
 
 h1 {
@@ -16,7 +18,7 @@ h1 {
 
 
 .pokemon-card {
-    width: 50%;
+    width: 100%;
     text-align: center;
     margin: 5px 0;
     padding: 5px;
@@ -24,6 +26,7 @@ h1 {
     background-color: white; /* Set card color to white */
     border-radius: 15px; /* Round the edges of the card */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for depth */
+    cursor: pointer;
 }
 
 
@@ -207,4 +210,28 @@ h1 {
 #search-input::placeholder {
     color: #ccc; /* Light gray placeholder */
     font-style: italic; /* Italic style */
+}
+
+.ability-button {
+    background-color: #9c9c9c; /* Default background for normal abilities */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 12px; /* Round corners */
+    padding: 5px 10px; /* Padding */
+    margin: 5px; /* Spacing between buttons */
+    cursor: pointer; /* Pointer on hover */
+    margin-top: -10px; /* Adjust as needed */
+    margin-left: -2px;
+    font-size: 12px;
+    display: inline-block;
+    text-transform: capitalize;
+}
+
+.hidden-ability {
+    background-color: #454545; /* Darker background for hidden abilities */
+}
+
+
+.ability-button:hover {
+    opacity: 0.8; /* Slightly fade on hover */
 }
